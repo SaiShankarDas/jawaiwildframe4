@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from "react";
+import { X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Updated links to absolute paths
 const navLinks = [
-  { name: 'Home', href: '/#hero' },
-  { name: 'Experiences', href: '/#experiences' },
-  { name: 'Gallery', href: '/gallery' }, // Updated to point to new page
-  { name: 'Safari', href: '/#safari' },
+  { name: "Home", href: "/#hero" },
+  { name: "Experiences", href: "/#experiences" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Safari", href: "/#safari" },
 ];
 
 export const Navbar = () => {
@@ -15,70 +14,115 @@ export const Navbar = () => {
 
   return (
     <>
-      {/* Increased z-index to z-[100] to ensure it stays above the z-50 footer section */}
-      <nav className="fixed top-0 left-0 w-full z-[100] bg-warm-white shadow-md py-4 transition-all duration-300">
-        <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-          <a href="/" className="font-serif text-2xl tracking-widest font-bold uppercase text-charcoal">
-            Jawai Wildframe
+      {/* NAVBAR */}
+      <nav className="fixed top-0 left-0 w-full z-[100] bg-[#f5f0e8] shadow-sm py-3 md:py-4">
+        <div className="relative max-w-[1500px] mx-auto px-4 md:px-8 flex items-center justify-between">
+
+          {/* LEFT — MENU BUTTON */}
+          <button
+            className="flex flex-col space-y-1 z-20"
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
+            <span className="block w-7 h-[2px] bg-charcoal"></span>
+            <span className="block w-7 h-[2px] bg-charcoal"></span>
+            <span className="block w-7 h-[2px] bg-charcoal"></span>
+          </button>
+
+          {/* CENTER — LOGO + TITLE */}
+          <a
+            href="/"
+            className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center select-none"
+          >
+            {/* BIGGER MOBILE LOGO, SLIGHTLY SMALLER DESKTOP */}
+            <img
+              src="/images/logo.png"
+              alt="Jawai Wildframe Logo"
+              className="
+                h-11        /* mobile bigger */
+                md:h-13     /* desktop size */
+                w-auto object-contain
+                mb-1
+              "
+            />
+
+            {/* TITLE — MOVED SLIGHTLY UP */}
+            <h1
+              className="
+                font-serif 
+                text-[14px] md:text-[20px] 
+                tracking-[0.28em] 
+                text-[#c8ad63] 
+                uppercase 
+                leading-none
+                -translate-y-1 md:-translate-y-[4px]
+              "
+            >
+              JAWAI WILDFRAME
+            </h1>
           </a>
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-sm tracking-widest uppercase text-charcoal/80 hover:text-desert transition-colors duration-300"
-              >
-                {link.name}
-              </a>
-            ))}
-            <a
-              href="/book"
-              className="px-6 py-2 border border-charcoal text-charcoal hover:bg-charcoal hover:text-white transition-all duration-300 uppercase text-xs tracking-widest font-bold"
-            >
-              Book Now
-            </a>
-          </div>
-
-          {/* Mobile Toggle */}
-          <button
-            className="lg:hidden z-50"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          {/* RIGHT — BOOK BUTTON */}
+          <a
+            href="/book"
+            className="
+              bg-[#c9a961] 
+              text-charcoal 
+              px-2 md:px-8 
+              py-2.5 md:py-3 
+              uppercase tracking-widest 
+              font-medium 
+              z-20 
+              hover:bg-[#b99851] 
+              transition-all 
+              flex items-center space-x-2 
+            "
           >
-            {isMobileMenuOpen ? (
-              <X className="text-charcoal" />
-            ) : (
-              <Menu className="text-charcoal" />
-            )}
-          </button>
+            <span className="md:hidden text-sm">Book</span>
+            <span className="hidden md:inline text-sm">Book Now</span>
+            <svg
+              className="w-0.5 h-3 md:w-4 md:h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* MOBILE SLIDE-OUT MENU */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
+            initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'tween', duration: 0.4 }}
-            className="fixed inset-0 z-[90] bg-warm-white flex flex-col items-center justify-center space-y-8"
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ duration: 0.35 }}
+            className="fixed inset-0 bg-[#f5f0e8] z-[200] flex flex-col items-center justify-center space-y-8"
           >
+            <button
+              className="absolute top-8 right-8"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <X className="w-8 h-8 text-charcoal" />
+            </button>
+
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-serif text-charcoal hover:text-desert transition-colors"
+                className="text-2xl font-serif text-charcoal hover:text-[#c9a961]"
               >
                 {link.name}
               </a>
             ))}
+
             <a
               href="/book"
+              className="px-8 py-3 bg-[#c9a961] text-charcoal hover:bg-[#b99851] uppercase tracking-widest"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="px-8 py-3 border border-charcoal text-charcoal hover:bg-charcoal hover:text-white uppercase tracking-widest transition-all"
             >
               Book Now
             </a>
