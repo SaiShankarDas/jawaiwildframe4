@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom Styling for React Phone Number Input to match Jawai Wildframe Theme */
+.PhoneInput {
+  display: flex;
+  align-items: stretch; /* Ensure both children stretch to match height */
+  gap: 0.75rem;
+}
+
+/* Style the Country Selector (Flag) container */
+.PhoneInputCountry {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0;
+  padding: 0 0.75rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.375rem; /* rounded-md */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.PhoneInputCountryIcon {
+  width: 1.5rem;
+  height: 1rem;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  display: block; /* Ensure it behaves correctly */
+}
+
+.PhoneInputCountrySelect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.PhoneInputCountrySelectArrow {
+  display: block;
+  content: '';
+  width: 0.3em;
+  height: 0.3em;
+  margin-left: 0.5em; /* Increased margin */
+  border-right: 1px solid var(--PhoneInputCountrySelectArrow-color);
+  border-bottom: 1px solid var(--PhoneInputCountrySelectArrow-color);
+  transform: rotate(45deg);
+  opacity: 0.45;
+  color: #F6F1E8;
+}
+
+.PhoneInputInput {
+  flex: 1;
+  min-width: 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.375rem; /* rounded-md */
+  padding: 0.75rem 1rem;
+  color: #F6F1E8; /* ivory */
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.PhoneInputInput:focus {
+  border-color: #c2a67a; /* desert */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.PhoneInputInput::placeholder {
+  color: rgba(246, 241, 232, 0.3); /* ivory/30 */
+}
+
+/* Adjust the country select focus state */
+.PhoneInputCountry:focus-within {
+  border-color: #c2a67a;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure the arrow color updates on focus if needed, though opacity handles it mostly */
+.PhoneInputCountry:focus-within .PhoneInputCountrySelectArrow {
+  opacity: 1;
+  color: #c2a67a;
+}
