@@ -4,7 +4,7 @@ import WhatsAppIcon from './common/WhatsAppIcon';
 
 export const FloatingWhatsApp = () => {
   // Updated WhatsApp number
-  const phoneNumber = "919325569661"; 
+  const phoneNumber = "918824662933"; 
   const message = encodeURIComponent("Hello! I'm interested in booking a safari with Jawai Wildframe.");
 
   return (
