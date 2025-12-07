@@ -28,53 +28,51 @@ export const Navbar = () => {
             <span className="block w-7 h-[2px] bg-charcoal"></span>
           </button>
 
-          {/* CENTER — LOGO + TITLE */}
-          <a
-            href="/"
-            className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center select-none"
-          >
-            {/* BIGGER MOBILE LOGO, SLIGHTLY SMALLER DESKTOP */}
-            <img
-              src="/images/logo.png"
-              alt="Jawai Wildframe Logo"
-              className="
-                h-11        /* mobile bigger */
-                md:h-13     /* desktop size */
-                w-auto object-contain
-                mb-1
-              "
-            />
+          {/* CENTER — TITLE + SUBTEXT (NO LOGO) */}
+<div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center leading-tight select-none">
 
-            {/* TITLE — MOVED SLIGHTLY UP */}
-            <h1
-              className="
-                font-serif 
-                text-[14px] md:text-[20px] 
-                tracking-[0.28em] 
-                text-[#c8ad63] 
-                uppercase 
-                leading-none
-                -translate-y-1 md:-translate-y-[4px]
-              "
-            >
-              JAWAI WILDFRAME
-            </h1>
-          </a>
+  {/* BIGGER TITLE */}
+  <h1
+    className="
+      font-serif 
+      text-[20px] md:text-[28px]   /* Increased size */
+      tracking-[0.30em] 
+      text-[#c8ad63] 
+      uppercase 
+      leading-none
+    "
+  >
+    JAWAI WILDFRAME
+  </h1>
 
+  {/* SMALLER SUBTEXT */}
+  <p
+    className="
+      text-[7px] md:text-[9px]     /* Reduced size */
+      tracking-[0.32em]
+      text-charcoal
+      uppercase
+      mt-1
+      opacity-80                   /* Softer, elegant */
+    "
+  >
+    Live closer to nature heaven
+  </p>
+</div>
           {/* RIGHT — BOOK BUTTON */}
           <a
             href="/book"
             className="
               bg-[#c9a961] 
               text-charcoal 
-              px-2 md:px-8 
+              px-3 md:px-8 
               py-2.5 md:py-3 
               uppercase tracking-widest 
               font-medium 
               z-20 
               hover:bg-[#b99851] 
               transition-all 
-              flex items-center space-x-2 
+              flex items-center space-x-2
             "
           >
             <span className="md:hidden text-sm">Book</span>

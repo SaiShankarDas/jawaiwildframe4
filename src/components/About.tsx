@@ -32,21 +32,27 @@ export const About = () => {
         </motion.div>
       </div>
 
-      {/* Right Side: Large Icon instead of photos */}
-      <div className="lg:w-1/2 flex justify-center items-center relative h-[40vh] lg:h-[auto] w-full">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
-          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full flex justify-center"
-        >
-          <img
-            src={ASSETS.about.leopardIcon}
-            alt="Leopard of Jawai"
-            className="w-64 h-64 md:w-80 md:h-80 lg:w-[30rem] lg:h-[30rem] object-contain opacity-80 hover:opacity-100 transition-opacity duration-700 drop-shadow-2xl"
-          />
-        </motion.div>
-      </div>
+     {/* Right Side: Logo + Text (Clean, No Containers) */}
+<div className="lg:w-1/2 flex flex-col justify-center items-center text-center py-10">
+
+  {/* Logo */}
+  <img
+    src="/images/logo.jpg"
+    alt="Jawai Wildframe Logo"
+    className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-contain"
+  />
+
+  {/* Brand Name */}
+  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mt-6 tracking-wide">
+    jawai wildframe
+  </h1>
+
+  {/* Tagline */}
+  <p className="font-playfair text-lg md:text-xl mt-3 text-gray-700">
+    Safari | Adventure | Hiking | Camping
+  </p>
+
+</div>
     </div>
   );
 };
