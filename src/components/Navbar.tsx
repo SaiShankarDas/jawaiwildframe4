@@ -28,50 +28,59 @@ export const Navbar = () => {
             <span className="block w-7 h-[2px] bg-charcoal"></span>
           </button>
 
-          {/* CENTER — TITLE + SUBTEXT (NO LOGO) */}
-<div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center leading-tight select-none">
+          {/* CENTER — TITLE + SUBTEXT */}
+          <div
+            className="
+              absolute left-1/2 -translate-x-1/2 
+              flex flex-col items-center 
+              leading-tight select-none
+              translate-y-[2px]
+            "
+          >
+            {/* TITLE */}
+            <h1
+              className="
+                font-serif 
+                text-[20px] md:text-[28px]
+                tracking-[0.30em]
+                text-[#c8ad63]
+                uppercase
+                leading-[1.1]
+                text-center
+              "
+            >
+              JAWAI WILDFRAME
+            </h1>
 
-  {/* BIGGER TITLE */}
-  <h1
-    className="
-      font-serif 
-      text-[20px] md:text-[28px]   /* Increased size */
-      tracking-[0.30em] 
-      text-[#c8ad63] 
-      uppercase 
-      leading-none
-    "
-  >
-    JAWAI WILDFRAME
-  </h1>
+            {/* SUBTEXT */}
+            <p
+              className="
+                text-[7px] md:text-[9px]
+                tracking-[0.32em]
+                text-charcoal
+                uppercase
+                mt-1
+                opacity-80
+                text-center
+              "
+            >
+              Live closer to nature heaven
+            </p>
+          </div>
 
-  {/* SMALLER SUBTEXT */}
-  <p
-    className="
-      text-[7px] md:text-[9px]     /* Reduced size */
-      tracking-[0.32em]
-      text-charcoal
-      uppercase
-      mt-1
-      opacity-80                   /* Softer, elegant */
-    "
-  >
-    Live closer to nature heaven
-  </p>
-</div>
           {/* RIGHT — BOOK BUTTON */}
           <a
             href="/book"
             className="
-              bg-[#c9a961] 
-              text-charcoal 
-              px-3 md:px-8 
-              py-2.5 md:py-3 
-              uppercase tracking-widest 
-              font-medium 
-              z-20 
-              hover:bg-[#b99851] 
-              transition-all 
+              bg-[#c9a961]
+              text-charcoal
+              px-3 md:px-8
+              py-2.5 md:py-3
+              uppercase tracking-widest
+              font-medium
+              z-20
+              hover:bg-[#b99851]
+              transition-all
               flex items-center space-x-2
             "
           >
