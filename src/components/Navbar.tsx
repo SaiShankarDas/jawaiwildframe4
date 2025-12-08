@@ -39,18 +39,28 @@ export const Navbar = () => {
           >
             {/* TITLE */}
             <h1
-              className="
-                font-serif 
-                text-[20px] md:text-[28px]
-                tracking-[0.30em]
-                text-[#c8ad63]
-                uppercase
-                leading-[1.1]
-                text-center
-              "
-            >
-              JAWAI WILDFRAME
-            </h1>
+  onClick={() => {
+    if (window.location.pathname === "/") {
+      // Already on home → just scroll to hero
+      document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Other page → go to home with #hero
+      window.location.href = "/#hero";
+    }
+  }}
+  className="
+    font-serif 
+    text-[20px] md:text-[28px]
+    tracking-[0.30em]
+    text-[#c8ad63]
+    uppercase
+    leading-[1.1]
+    text-center
+    cursor-pointer
+  "
+>
+  JAWAI WILDFRAME
+</h1>
 
             {/* SUBTEXT */}
             <p
