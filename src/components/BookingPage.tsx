@@ -30,11 +30,9 @@ export const BookingPage = () => {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
-    
-    // Convert FormData to a plain object
+
     const data = Object.fromEntries(formData.entries());
-    
-    // Add the phone number manually since it's a controlled component
+
     const payload = {
       ...data,
       whatsapp: phoneNumber || "Not provided"
@@ -42,15 +40,11 @@ export const BookingPage = () => {
 
     try {
       const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
-      
+
       if (!scriptUrl || scriptUrl === "YOUR_GOOGLE_SCRIPT_URL") {
         throw new Error("Google Script URL is not configured.");
       }
 
-      // We use no-cors mode if we just want to fire and forget, 
-      // but to read the response we need standard CORS. 
-      // Google Apps Script Web Apps deployed as "Anyone" support simple POST requests.
-      // We send as text/plain to avoid preflight OPTIONS request issues in some environments.
       const response = await fetch(scriptUrl, {
         method: 'POST',
         body: JSON.stringify(payload),
@@ -71,7 +65,6 @@ export const BookingPage = () => {
     }
   };
 
-  // Auto-dismiss success message after 10 seconds
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (isSubmitted) {
@@ -85,13 +78,10 @@ export const BookingPage = () => {
   return (
     <div className="min-h-screen bg-forest-green text-ivory font-sans selection:bg-desert selection:text-white flex flex-col">
       
-      {/* Spacer for Fixed Navbar */}
       <div className="h-24 md:h-32"></div>
 
-      {/* Reduced top padding (pt-6 md:pt-10) to decrease gap between header and title */}
       <div className="flex-grow container mx-auto px-6 md:px-12 lg:px-20 pt-6 md:pt-10 pb-12 md:pb-20">
         
-        {/* Page Header */}
         <div className="text-center mb-16 md:mb-24">
           <FadeIn>
             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight text-ivory">
@@ -105,7 +95,7 @@ export const BookingPage = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-stretch">
           
-          {/* LEFT COLUMN: Booking Form */}
+          {/* LEFT FORM */}
           <FadeIn delay={0.2} className="w-full flex flex-col">
             <h2 className="font-serif text-3xl md:text-4xl text-ivory mb-8 border-b border-desert/30 pb-4 inline-block">
               Booking Details
@@ -135,6 +125,7 @@ export const BookingPage = () => {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6 flex-grow flex flex-col">
+                
                 {/* Name */}
                 <div className="relative">
                   <label className="block text-xs uppercase tracking-widest text-ivory/60 mb-2 ml-1">Name</label>
@@ -144,30 +135,28 @@ export const BookingPage = () => {
                       type="text" 
                       name="name"
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory placeholder-ivory/30 focus:outline-none focus:border-desert focus:bg-white/10 transition-all duration-300"
+                      className="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory"
                       placeholder="Your Full Name"
                     />
                   </div>
                 </div>
 
+                {/* PHONE + EMAIL */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* WhatsApp Number with Flag Selector */}
+                  
                   <div>
                     <label className="block text-xs uppercase tracking-widest text-ivory/60 mb-2 ml-1">WhatsApp Number</label>
-                    <div className="relative">
-                      <PhoneInput
-                        defaultCountry="IN"
-                        value={phoneNumber}
-                        onChange={setPhoneNumber}
-                        placeholder="Enter phone number"
-                        international
-                        countryCallingCodeEditable={false}
-                        className="w-full" // Wrapper class
-                      />
-                    </div>
+                    <PhoneInput
+                      defaultCountry="IN"
+                      value={phoneNumber}
+                      onChange={setPhoneNumber}
+                      placeholder="Enter phone number"
+                      international
+                      countryCallingCodeEditable={false}
+                      className="w-full"
+                    />
                   </div>
 
-                  {/* Email */}
                   <div>
                     <label className="block text-xs uppercase tracking-widest text-ivory/60 mb-2 ml-1">Email (Optional)</label>
                     <div className="relative">
@@ -175,15 +164,16 @@ export const BookingPage = () => {
                       <input 
                         type="email" 
                         name="email"
-                        className="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory placeholder-ivory/30 focus:outline-none focus:border-desert focus:bg-white/10 transition-all duration-300"
+                        className="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory"
                         placeholder="you@example.com"
                       />
                     </div>
                   </div>
                 </div>
 
+                {/* PEOPLE + DATE */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Number of People */}
+                  
                   <div>
                     <label className="block text-xs uppercase tracking-widest text-ivory/60 mb-2 ml-1">Number of People</label>
                     <div className="relative">
@@ -193,13 +183,12 @@ export const BookingPage = () => {
                         name="people"
                         min="1"
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory placeholder-ivory/30 focus:outline-none focus:border-desert focus:bg-white/10 transition-all duration-300"
+                        className="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory"
                         placeholder="2"
                       />
                     </div>
                   </div>
 
-                  {/* Travel Date */}
                   <div>
                     <label className="block text-xs uppercase tracking-widest text-ivory/60 mb-2 ml-1">Travel Date</label>
                     <div className="relative">
@@ -208,30 +197,29 @@ export const BookingPage = () => {
                         type="date" 
                         name="date"
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory placeholder-ivory/30 focus:outline-none focus:border-desert focus:bg-white/10 transition-all duration-300 [color-scheme:dark]"
+                        className="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory [color-scheme:dark]"
                       />
                     </div>
                   </div>
                 </div>
 
-                {/* Safari Options */}
+                {/* SAFARI OPTIONS */}
                 <div>
                   <label className="block text-xs uppercase tracking-widest text-ivory/60 mb-2 ml-1">Preferred Experience</label>
                   <div className="relative">
                     <Compass className="absolute left-4 top-3.5 text-ivory/40" size={18} />
                     <select 
                       name="experience"
-                      className="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory placeholder-ivory/30 focus:outline-none focus:border-desert focus:bg-white/10 transition-all duration-300 appearance-none"
+                      className="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory appearance-none"
                       defaultValue=""
                     >
-                      <option value="" disabled className="bg-forest-green text-ivory/50">Select an experience...</option>
+                      <option value="" disabled>Select an experience...</option>
                       {safariOptions.map((option, index) => (
-                        <option key={index} value={option} className="bg-forest-green text-ivory">
+                        <option key={index} value={option}>
                           {option}
                         </option>
                       ))}
                     </select>
-                    {/* Custom Arrow */}
                     <div className="absolute right-4 top-4 pointer-events-none">
                       <svg className="w-4 h-4 text-ivory/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -240,7 +228,7 @@ export const BookingPage = () => {
                   </div>
                 </div>
 
-                {/* Message */}
+                {/* MESSAGE */}
                 <div className="flex-grow">
                   <label className="block text-xs uppercase tracking-widest text-ivory/60 mb-2 ml-1">Message / Special Requests</label>
                   <div className="relative h-full">
@@ -248,7 +236,7 @@ export const BookingPage = () => {
                     <textarea 
                       name="message"
                       rows={4}
-                      className="w-full h-full min-h-[120px] bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory placeholder-ivory/30 focus:outline-none focus:border-desert focus:bg-white/10 transition-all duration-300 resize-none"
+                      className="w-full min-h-[120px] bg-white/5 border border-white/10 rounded-md py-3 pl-12 pr-4 text-ivory resize-none"
                       placeholder="Tell us about your preferences..."
                     ></textarea>
                   </div>
@@ -260,11 +248,10 @@ export const BookingPage = () => {
                   </div>
                 )}
 
-                {/* Submit Button */}
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-desert to-[#d4b98c] text-charcoal font-bold uppercase tracking-widest py-4 rounded-md hover:scale-[1.02] transition-transform duration-300 shadow-lg mt-6 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                  className="w-full bg-gradient-to-r from-desert to-[#d4b98c] text-charcoal font-bold uppercase tracking-widest py-4 rounded-md hover:scale-[1.02] transition-transform duration-300 shadow-lg mt-6 flex items-center justify-center gap-3 disabled:opacity-70"
                 >
                   {isSubmitting ? (
                     <>
@@ -279,52 +266,68 @@ export const BookingPage = () => {
             )}
           </FadeIn>
 
-          {/* RIGHT COLUMN: Map & Location */}
+          {/* RIGHT COLUMN — MAP */}
           <FadeIn delay={0.4} className="w-full h-full flex flex-col">
             <h2 className="font-serif text-3xl md:text-4xl text-ivory mb-8 border-b border-desert/30 pb-4 inline-block">
               Location
             </h2>
 
             <div className="flex-grow flex flex-col">
+              
               <div className="w-full flex-grow rounded-lg border-4 border-white/10 shadow-2xl overflow-hidden relative group min-h-[300px]">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.618688624645!2d73.0649!3d25.1289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3942eb4900000001%3A0x1234567890abcdef!2sJawai%20Bandh%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1625000000000!5m2!1sen!2sin" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0, filter: 'grayscale(0.2) contrast(1.1)' }} 
-                  allowFullScreen 
+
+                {/* MAP EMBED */}
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3576.139139944385!2d73.2162884683368!3d25.084424835504013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x394297001d182f65%3A0xd4c5700931665784!2sJawai%20Wildframe%20Safari!5e0!3m2!1sen!2sin!4v1765197904831!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: "grayscale(0.2) contrast(1.1)" }}
+                  allowFullScreen
                   loading="lazy"
-                  className="w-full h-full"
-                  title="Jawai Wildframe Location"
-                ></iframe>
-                
-                {/* Overlay text */}
+                  className="w-full h-full pointer-events-none"
+                  title="Jawai Wildframe Safari Location"
+                />
+
+                {/* CLICK OVERLAY */}
+                <a
+                  href="https://maps.app.goo.gl/37UffoPZs5NvGXxd6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 z-20"
+                ></a>
+
+                {/* OVERLAY TEXT */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 pointer-events-none">
                   <div className="flex items-center text-ivory">
                     <MapPin className="text-desert mr-2" size={20} />
-                    <span className="font-light tracking-wide">Jawai Bandh, Pali District, Rajasthan</span>
+                    <span className="font-light tracking-wide">
+                      Jawai Bandh, Pali District, Rajasthan
+                    </span>
                   </div>
                 </div>
               </div>
 
-              {/* Aligned to bottom using mt-auto */}
+              {/* BOTTOM INFO */}
               <div className="mt-auto pt-8 space-y-4 text-ivory/80 font-light">
-                 <p>
-                   <strong className="text-desert font-bold uppercase text-xs tracking-widest block mb-1">Getting Here</strong>
-                   Jawai is well connected by road from Udaipur (3 hrs) and Jodhpur (3 hrs). The nearest railway station is Falna (30 mins).
-                 </p>
-                 {/* Coordinates removed as requested */}
+                <p>
+                  <strong className="text-desert font-bold uppercase text-xs tracking-widest block mb-1">
+                    Getting Here
+                  </strong>
+                  Jawai is well connected by road from Udaipur (3 hrs) and Jodhpur (3 hrs). 
+                  The nearest railway station is Falna (30 mins).
+                </p>
               </div>
+
             </div>
           </FadeIn>
 
         </div>
       </div>
 
-      {/* Footer Reuse */}
       <div className="bg-charcoal text-white mt-auto border-t border-white/10">
         <Footer />
       </div>
+
     </div>
   );
 };
