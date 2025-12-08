@@ -119,11 +119,6 @@ export const StorySections = () => {
                 <div className="font-sans text-gray-600 text-base leading-relaxed mb-10 font-light">
                   {story.text}
                 </div>
-
-                {/* Explore Button */}
-                <button className="w-full py-4 border-[1.5px] border-[#C0B29A] text-[#2c2c2c] rounded-xl uppercase tracking-[0.15em] font-bold text-xs hover:bg-[#C0B29A] hover:text-white transition-all duration-300 active:scale-[0.98]">
-                  Explore
-                </button>
               </FadeIn>
             </div>
             
@@ -173,15 +168,6 @@ export const StorySections = () => {
                     <div className={`leading-relaxed text-base md:text-lg ${isGreen ? 'text-ivory/80' : 'text-gray-600'}`}>
                       {story.text}
                     </div>
-
-                    {/* Button */}
-                    <button className={`inline-block mt-8 border px-8 py-3 rounded-md text-sm tracking-wide uppercase font-bold transition-all duration-300 ${
-                      isGreen 
-                        ? 'border-ivory text-ivory hover:bg-ivory hover:text-forest-green' 
-                        : 'border-charcoal text-charcoal hover:bg-charcoal hover:text-white'
-                    }`}>
-                      Explore
-                    </button>
                   </div>
                 </div>
               </section>
