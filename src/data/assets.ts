@@ -4,7 +4,7 @@
 export const ASSETS = {
   hero: {
     // Main Hero Video
-    video: "/videos/jawai f 480p.mp4", 
+    video: "/videos/1.mp4", 
     // Cover image shown while video loads
     cover: "/images/jawai 7.webp"
   },
