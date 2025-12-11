@@ -9,46 +9,37 @@ export const ASSETS = {
     cover: "/images/jawai 7.webp"
   },
   about: {
-    safariSilhouette: "/images/shepherd jawai.jpg",
-    luxuryDeck: "/images/jawai 4 (Large).jpg",
-    leopardIcon: "https://cdn-icons-png.flaticon.com/512/15707/15707379.png"
-  },
-  conservation: {
-    community: "/images/village walk.jpg",
     leopard: "/images/leopard jawai.jpg"
   },
-  dining: {
-    bushDinner: "/images/bush.jpg"
-  },
   experiences: {
-    leopardSafari: "/images/leopard jawai.jpg",
-    luxuryStay: "/images/tents (Large).jpg",
-    villageWalk: "/images/village walk.jpg",
-    hillSunrise: "/images/jawai sunrise.jpg",
-    bushDinner: "/images/bush.jpg",
-    birdWatching: "/images/jawai 7.webp"
+    leopardSafari: "/images/experiences/leopard1.jpg",
+    luxuryStay: "/images/experiences/tents (Large).jpg",
+    villageWalk: "/images/experiences/village walk.jpg",
+    hillSunrise: "/images/experiences/Granite Hills.jpg",
+    bushDinner: "images/experiences/bush.jpg",
+    birdWatching: "images/experiences/flamingo.jpg"
   },
   // Specific images for the Experiences Carousel
   experiencesList: {
-    leopard: "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&w=800&q=80",
-    prime: "https://images.unsplash.com/photo-1534759846116-5799c33ce22a?auto=format&fit=crop&w=800&q=80",
-    premium: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80",
-    birds: "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?auto=format&fit=crop&q=80",
-    village: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80",
-    jungle: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
-    photography: "https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=800&q=80"
-  },
+  leopard: "images/experiencesList/1.jpg",
+  prime: "images/experiencesList/2.jpg",
+  premium: "images/experiencesList/3.jpg",
+  birds: "images/experiencesList/4.jpg",
+  village: "images/experiencesList/5.jpg",
+  jungle: "images/experiencesList/6.jpg",
+  photography: "images/experiencesList/7.jpg"
+},
   photographySafari: {
     main: "https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=800&q=80"
   },
   storySections: {
-    leopards: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80",
-    naturalists: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1920&q=80",
-    safaris: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1920&q=80",
-    stay: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1920&q=80"
-  },
+  leopards: "/images/storySections/1.jpg",
+  naturalists: "/images/storySections/2.jpg",
+  safaris: "/images/storySections/3.jpg",
+  stay: "/images/storySections/4.jpg"
+},
   gallery: [
-    { url: "/images/1.jpeg", label: "Jawai Landscapes" },
+    { url: "/images/1.jpg", label: "Jawai Landscapes" },
     { url: "/images/2.jpeg", label: "Leopard Sightings" },
     { url: "/images/3.jpeg", label: "Luxury Interiors" },
     { url: "/images/4.jpeg", label: "Campfire Evenings" },

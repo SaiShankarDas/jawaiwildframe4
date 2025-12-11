@@ -14,7 +14,7 @@ export const WildernessSafaris = () => {
           className="w-full h-full"
         >
           <img 
-            src={ASSETS.experiences.leopardSafari} 
+            src={ASSETS.about.leopard} 
             alt="Jawai Leopard Safari" 
             className="w-full h-full object-cover"
           />
