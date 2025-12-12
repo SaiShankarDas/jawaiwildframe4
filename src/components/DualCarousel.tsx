@@ -16,7 +16,7 @@ const rightImages = [
 
 export const DualCarousel = () => {
   const targetRef = useRef<HTMLDivElement>(null);
-  
+
   // Track scroll progress of the container
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -48,15 +48,15 @@ export const DualCarousel = () => {
         {/* Horizontal Scroll Container */}
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-8 w-full scrollbar-hide">
           {allImages.map((img, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="flex-shrink-0 w-[85vw] md:w-[50vw] snap-center"
             >
               <div className="overflow-hidden rounded-sm">
-                <img 
-                  src={img.src} 
-                  alt={img.alt} 
-                  className="w-full h-auto object-cover aspect-[3/4]" 
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-auto object-cover aspect-[3/4]"
                 />
               </div>
               <p className="mt-4 text-xs uppercase tracking-widest text-charcoal/60 text-center">
@@ -70,12 +70,12 @@ export const DualCarousel = () => {
       {/* =========================================
           DESKTOP VIEW (Scroll-Locked Animation)
           ========================================= */}
-      <section 
-        ref={targetRef} 
+      <section
+        ref={targetRef}
         className="hidden lg:block h-[450vh] relative bg-warm-white"
       >
         <div className="sticky top-0 h-screen w-full overflow-hidden flex justify-center items-center">
-          
+
           {/* CENTRAL TEXT BLOCK (Fixed) */}
           <div className="relative z-0 text-center max-w-xl px-6">
             <h2 className="font-serif text-[3.5rem] text-charcoal mb-8 leading-[1.15]">
@@ -87,13 +87,13 @@ export const DualCarousel = () => {
           </div>
 
           {/* LEFT IMAGE STACK */}
-          <motion.div 
+          <motion.div
             style={{ y: yLeft }}
-            className="absolute left-[5%] top-0 w-[25vw] flex flex-col gap-[60vh] z-10 pointer-events-none"
+            className="absolute left-[5%] top-0 w-[25vw] flex flex-col gap-[45vh] z-10 pointer-events-none"
           >
             {leftImages.map((img, idx) => (
-              <div 
-                key={`left-${idx}`} 
+              <div
+                key={`left-${idx}`}
                 className="w-full aspect-[3/3.036] overflow-hidden"
               >
                 <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
@@ -102,13 +102,13 @@ export const DualCarousel = () => {
           </motion.div>
 
           {/* RIGHT IMAGE STACK */}
-          <motion.div 
+          <motion.div
             style={{ y: yRight }}
-            className="absolute right-[5%] top-0 w-[25vw] flex flex-col gap-[60vh] z-10 pointer-events-none"
+            className="absolute right-[5%] top-0 w-[25vw] flex flex-col gap-[45vh] z-10 pointer-events-none"
           >
             {rightImages.map((img, idx) => (
-              <div 
-                key={`right-${idx}`} 
+              <div
+                key={`right-${idx}`}
                 className="w-full aspect-[3/3.036] overflow-hidden"
               >
                 <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
